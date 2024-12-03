@@ -20,4 +20,5 @@ pillow
 
 # app4.py
 google-cloud-bigquery
+google-auth
 db-dtypes
