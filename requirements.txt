@@ -17,3 +17,7 @@ seaborn
 plotly
 streamlit-lottie
 pillow
+
+# app4.py
+google-cloud-bigquery
+db-dtypes
