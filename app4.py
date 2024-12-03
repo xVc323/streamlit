@@ -1,5 +1,6 @@
 import streamlit as st
 from google.cloud import bigquery
+from google.oauth2 import service_account  # Added this import
 import pandas as pd
 import plotly.express as px
 from scipy.stats import chi2_contingency, ttest_ind
