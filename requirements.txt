@@ -1,0 +1,19 @@
+streamlit
+pdf2image
+google-generativeai
+Pillow
+aiohttp
+python-dotenv
+
+# app3.py
+pandas
+numpy
+matplotlib
+scipy
+statsmodels
+scikit-learn
+openpyxl
+seaborn
+plotly
+streamlit-lottie
+pillow
