@@ -1,13 +1,9 @@
-# app.py
-
 import streamlit as st
 from google.cloud import bigquery
 import pandas as pd
 import plotly.express as px
 from scipy.stats import chi2_contingency, ttest_ind
 import json
-import os
-from dotenv import load_dotenv
 
 # =========================
 # Configuration and Setup
@@ -20,24 +16,19 @@ st.set_page_config(page_title="January 2021 Web Analytics Dashboard", layout="wi
 st.title("📊 January 2021 Web Analytics Dashboard")
 
 # =========================
-# Load Environment Variables
+# Initialize BigQuery Client
 # =========================
 
-# Load environment variables from .env file
-load_dotenv()
+# Get credentials from Streamlit secrets
+credentials_dict = st.secrets["gcp_service_account"]
 
-# Get the path to the credentials from environment variables
-credentials_path = os.getenv("GOOGLE_APPLICATION_CREDENTIALS")
-
-if not credentials_path:
-    st.error("GOOGLE_APPLICATION_CREDENTIALS not found in environment variables.")
+# Initialize BigQuery client with credentials
+try:
+    credentials = service_account.Credentials.from_service_account_info(credentials_dict)
+    client = bigquery.Client(credentials=credentials)
+except Exception as e:
+    st.error(f"Failed to initialize BigQuery client: {e}")
     st.stop()
-
-# Set the environment variable for Google Cloud
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = credentials_path
-
-# Initialize BigQuery client
-client = bigquery.Client()
 
 # Function to run SQL queries and return a DataFrame
 @st.cache_data
